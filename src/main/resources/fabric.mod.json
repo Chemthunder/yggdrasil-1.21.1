@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+
+  "id": "yggdrasil",
+
+  "version": "${version}",
+
+  "name": "Yggdrasil",
+  "description": "",
+  "authors": [
+    "Me!"
+  ],
+
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "ARR",
+
+  "icon": "assets/yggdrasil/icon.png",
+
+  "environment": "*",
+
+  "entrypoints": {
+    "main": [
+      "org.autumn.yggdrasil.core.Yggdrasil"
+    ],
+    "client": [
+      "org.autumn.yggdrasil.core.YggdrasilClient"
+    ],
+
+    "fabric-datagen": [
+      "org.autumn.yggdrasil.datagen.YggdrasilDataGenerator"
+    ],
+
+    "cardinal-components": [
+      "org.autumn.yggdrasil.core.cca.YggdrasilCCA"
+    ]
+  },
+
+  "mixins": [
+    "yggdrasil.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.15.11",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+
+  "custom": {
+    "cardinal-components": [
+      "yggdrasil:world"
+    ]
+  }
+}
