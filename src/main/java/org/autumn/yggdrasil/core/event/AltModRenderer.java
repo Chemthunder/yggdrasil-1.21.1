@@ -35,12 +35,12 @@ public class AltModRenderer implements WorldRenderEvents.Last {
 
         matrices.translate(x, y, z);
 
-        Nitrogen.texCube(
+        RenderUtils.renderTexturedCube(
                 matrices,
                 immediate.getBuffer(RenderLayer.getEntityTranslucentEmissive(
                         Yggdrasil.id("textures/render/tile_0.png")
                 )),
-                x, y, z,
+                new BlockPos(0, 0, 0),
                 50,
                 new Vec2f((c.getAge() + delta) / -f, (c.getAge() + delta) / -f),
                 32
