@@ -39,6 +39,7 @@
     ]
   },
 
+  "accessWidener": "yggdrasil.accesswidener",
   "mixins": [
     "yggdrasil.mixins.json"
   ],
@@ -52,7 +53,9 @@
 
   "custom": {
     "cardinal-components": [
-      "yggdrasil:world"
+      "yggdrasil:world",
+      "yggdrasil:enclosed",
+      "yggdrasil:trusted"
     ]
   }
 }

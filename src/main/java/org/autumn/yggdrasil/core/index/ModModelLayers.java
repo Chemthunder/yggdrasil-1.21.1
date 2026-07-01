@@ -7,8 +7,11 @@ import net.minecraft.client.render.entity.model.EntityModelLayer;
 import org.autumn.yggdrasil.core.Yggdrasil;
 import org.autumn.yggdrasil.core.client.model.PlaneModel;
 
+/**
+ * @author AcoYT
+ */
 @Environment(EnvType.CLIENT)
-public interface YggdrasilModelLayers {
+public interface ModModelLayers {
     EntityModelLayer PLANE = create("plane");
 
     private static EntityModelLayer create(String name) {

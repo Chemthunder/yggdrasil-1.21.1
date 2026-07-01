@@ -12,7 +12,7 @@ import net.minecraft.util.math.Vec3d;
  * @author n1tr0nr
  */
 @SuppressWarnings("unused")
-public class Nitrogen {
+public class Nitro {
     public static void renderSolidColorCube(MatrixStack matrices, VertexConsumer vertices, int color, Vec3d center, float inflation) {
         MatrixStack.Entry entry = matrices.peek();
         float x0 = (float)(center.getX() + (double)0.5F - (double)inflation);
