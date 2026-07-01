@@ -34,20 +34,21 @@ public class YggRenderEvent implements WorldRenderEvents.Last {
             {
                 matrixStack.push();
 
-                PlaneModel marker = new PlaneModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(ModModelLayers.PLANE));
-
                 matrixStack.translate(x, y, z);
 
-                marker.render(
+                Nitro.texSphere(
                         matrixStack,
                         consumers.getBuffer(
-                                RenderLayer.getEntityTranslucentEmissive(
-                                        Yggdrasil.id("textures/render/snail")
+                                RenderLayer.getEntityTranslucentCull(
+                                        Yggdrasil.id("textures/render/orb.png")
                                 )
                         ),
-                        50,
-                        OverlayTexture.DEFAULT_UV,
-                        0xFFffffff
+                        0,
+                        0,
+                        0,
+                        5,
+                        6,
+                        (w.getAge() + delta) / 4
                 );
 
                 matrixStack.pop();

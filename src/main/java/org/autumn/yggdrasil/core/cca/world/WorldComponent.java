@@ -19,6 +19,9 @@ import org.ladysnake.cca.api.v3.component.tick.CommonTickingComponent;
 
 import java.util.List;
 
+/**
+ * @author Chemthunder
+ */
 public class WorldComponent implements AutoSyncedComponent, CommonTickingComponent {
     public static final ComponentKey<WorldComponent> KEY = ComponentRegistry.getOrCreate(
             Yggdrasil.id("world"),

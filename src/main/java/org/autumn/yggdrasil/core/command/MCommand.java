@@ -21,7 +21,11 @@ public class MCommand implements CommandRegistrationCallback {
                 .then(CommandManager.literal("pos").then(CommandManager.argument("a", BlockPosArgumentType.blockPos()).executes(context -> {
                     BlockPos pos = BlockPosArgumentType.getBlockPos(context, "a");
 
-                    WorldComponent.KEY.get(context.getSource().getWorld()).setPos(new Vec3d(pos.getX(), pos.getY(), pos.getZ()));
+                    WorldComponent.KEY.get(context.getSource().getWorld()).setPos(new Vec3d(
+                            pos.getX() + 1.0F,
+                            pos.getY(),
+                            pos.getZ() + 1.0F
+                    ));
                     return 1;
                 })))
                 .then(CommandManager.literal("reset").executes(context -> {

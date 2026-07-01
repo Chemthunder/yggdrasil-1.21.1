@@ -33,7 +33,7 @@ public abstract class LivingEntityMixin {
                                 self.getZ(),
                                 9,
                                 0.1F,
-                                self.getHeight(),
+                                self.getHeight() / 2.0F,
                                 0.1F,
                                 0.03F
                         );
