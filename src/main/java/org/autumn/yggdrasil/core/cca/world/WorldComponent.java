@@ -1,23 +1,16 @@
 package org.autumn.yggdrasil.core.cca.world;
 
 import com.nitron.nitrogen.util.interfaces.ScreenShaker;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtElement;
-import net.minecraft.nbt.NbtOps;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.autumn.yggdrasil.core.Yggdrasil;
-import org.autumn.yggdrasil.core.cca.entity.EnclosedComponent;
 import org.ladysnake.cca.api.v3.component.ComponentKey;
 import org.ladysnake.cca.api.v3.component.ComponentRegistry;
 import org.ladysnake.cca.api.v3.component.sync.AutoSyncedComponent;
 import org.ladysnake.cca.api.v3.component.tick.CommonTickingComponent;
-
-import java.util.List;
 
 /**
  * @author Chemthunder
