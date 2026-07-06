@@ -1,10 +1,8 @@
 package org.autumn.yggdrasil.core.cca.entity;
 
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.text.Text;
 import net.minecraft.util.math.Box;
 import org.autumn.yggdrasil.core.Yggdrasil;
 import org.autumn.yggdrasil.core.cca.world.WorldComponent;
@@ -51,10 +49,6 @@ public class EnclosedComponent implements AutoSyncedComponent, CommonTickingComp
                 inBox = false;
                 sync();
             }
-        }
-
-        if (living instanceof PlayerEntity player) {
-            player.sendMessage(Text.literal("in box: " + inBox), true);
         }
     }
 

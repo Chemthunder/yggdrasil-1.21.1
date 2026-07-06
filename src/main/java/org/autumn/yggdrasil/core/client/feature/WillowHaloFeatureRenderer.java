@@ -9,7 +9,6 @@ import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.RotationAxis;
 import org.autumn.yggdrasil.core.Yggdrasil;
@@ -21,22 +20,22 @@ import org.jetbrains.annotations.NotNull;
 /**
  * @author Chemthunder
  */
-public class SpinnyThingyFeature<T extends AbstractClientPlayerEntity> extends FeatureRenderer<T, PlayerEntityModel<T>> {
+public class WillowHaloFeatureRenderer<T extends AbstractClientPlayerEntity> extends FeatureRenderer<T, PlayerEntityModel<T>> {
     private final PlaneModel plane;
 
-    public SpinnyThingyFeature(FeatureRendererContext<T, PlayerEntityModel<T>> context, EntityRendererFactory.@NotNull Context ctx) {
+    public WillowHaloFeatureRenderer(FeatureRendererContext<T, PlayerEntityModel<T>> context, EntityRendererFactory.@NotNull Context ctx) {
         super(context);
         this.plane = new PlaneModel(ctx.getPart(ModModelLayers.PLANE));
     }
 
     public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, T entity, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
-        if (entity != null) {
+        if (entity != null && !entity.isInvisible()) {
             TrustedComponent trust = TrustedComponent.KEY.get(entity);
 
             if (trust.isTrusted()) {
                 matrices.push();
 
-                matrices.scale(1.2F, 1.2F, 1.2F);
+                matrices.scale(1.4F, 1.4F, 1.4F);
 
                 matrices.translate(0, -0.25F, 0);
 
@@ -45,13 +44,9 @@ public class SpinnyThingyFeature<T extends AbstractClientPlayerEntity> extends F
 
                 matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(headPitch));
 
-                if (!entity.getEquippedStack(EquipmentSlot.HEAD).isEmpty()) {
-                    matrices.translate(0, -0.6F, 0);
-                } else {
-                    matrices.translate(0, -0.4F, 0);
-                }
+                matrices.translate(0, -0.4F, 0);
 
-                matrices.translate(0, -0.3F, 0);
+                matrices.translate(0, 0.1F, 0);
 
                 matrices.multiply(
                         RotationAxis.POSITIVE_Z.rotationDegrees(45)
@@ -72,7 +67,7 @@ public class SpinnyThingyFeature<T extends AbstractClientPlayerEntity> extends F
                         vertexConsumers.getBuffer(RenderLayer.getEntityTranslucentCull(Yggdrasil.id("textures/render/alt_sigil.png"))),
                         light,
                         OverlayTexture.DEFAULT_UV,
-                        ColorHelper.Argb.withAlpha(25, 0xffffff)
+                        ColorHelper.Argb.withAlpha(50, 0xffffff)
                 );
 
                 plane.render(

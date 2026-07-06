@@ -1,4 +1,4 @@
-package org.autumn.yggdrasil.mixin.client;
+package org.autumn.yggdrasil.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 
 import static org.autumn.yggdrasil.core.Yggdrasil.id;
 
-@Mixin(InGameHud.class)
+@Mixin(value = InGameHud.class)
 public abstract class InGameHudMixin {
     @Shadow @Nullable protected abstract PlayerEntity getCameraPlayer();
 

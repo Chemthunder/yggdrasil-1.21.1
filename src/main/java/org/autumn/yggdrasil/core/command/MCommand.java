@@ -10,12 +10,11 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import org.autumn.yggdrasil.core.cca.entity.TrustedComponent;
 import org.autumn.yggdrasil.core.cca.world.WorldComponent;
 
-import static net.minecraft.server.command.CommandManager.literal;
 import static net.minecraft.server.command.CommandManager.argument;
+import static net.minecraft.server.command.CommandManager.literal;
 
 /**
  * @author Chemthunder
@@ -27,11 +26,7 @@ public class MCommand implements CommandRegistrationCallback {
                         .then(literal("setPos").then(argument("pos", BlockPosArgumentType.blockPos()).executes(context -> {
                             BlockPos pos = BlockPosArgumentType.getBlockPos(context, "pos");
 
-                            WorldComponent.KEY.get(context.getSource().getWorld()).setPos(new Vec3d(
-                                    pos.getX(),
-                                    pos.getY(),
-                                    pos.getZ()
-                            ));
+                            WorldComponent.KEY.get(context.getSource().getWorld()).setPos(pos.toCenterPos());
                             return 1;
                         })))
                         .then(literal("reset").executes(context -> {

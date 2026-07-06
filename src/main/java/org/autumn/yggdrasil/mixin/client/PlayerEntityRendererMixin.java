@@ -5,7 +5,7 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.LivingEntityRenderer;
 import net.minecraft.client.render.entity.PlayerEntityRenderer;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
-import org.autumn.yggdrasil.core.client.feature.SpinnyThingyFeature;
+import org.autumn.yggdrasil.core.client.feature.WillowHaloFeatureRenderer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -22,6 +22,6 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<Abs
 
     @Inject(method = "<init>", at = @At(value = "TAIL"))
     private void addFeatures(EntityRendererFactory.Context ctx, boolean slim, CallbackInfo ci) {
-        addFeature(new SpinnyThingyFeature<>(this, ctx));
+        addFeature(new WillowHaloFeatureRenderer<>(this, ctx));
     }
 }
