@@ -5,6 +5,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.text.Text;
+import net.minecraft.util.math.Box;
 import org.autumn.yggdrasil.core.Yggdrasil;
 import org.autumn.yggdrasil.core.cca.world.WorldComponent;
 import org.ladysnake.cca.api.v3.component.ComponentKey;
@@ -31,16 +32,29 @@ public class EnclosedComponent implements AutoSyncedComponent, CommonTickingComp
     public void tick() {
         WorldComponent w = WorldComponent.KEY.get(living.getWorld());
 
-        if (living.getBlockPos().isWithinDistance(w.getPos(), 75)) {
-            if (!inBox) {
-                inBox = true;
-                sync();
+        if (w.isPlaced()) {
+            Box collider = new Box(w.getBPos()).expand(w.getRadius());
+
+            if (collider.contains(living.getPos())) {
+                if (!inBox) {
+                    inBox = true;
+                    sync();
+                }
+            } else {
+                if (inBox) {
+                    inBox = false;
+                    sync();
+                }
             }
         } else {
             if (inBox) {
                 inBox = false;
                 sync();
             }
+        }
+
+        if (living instanceof PlayerEntity player) {
+            player.sendMessage(Text.literal("in box: " + inBox), true);
         }
     }
 

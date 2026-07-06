@@ -34,7 +34,7 @@ public class YggRenderEvent implements WorldRenderEvents.Last {
             {
                 matrixStack.push();
 
-                matrixStack.translate(x, y, z);
+                matrixStack.translate(x, y + 0.5F, z);
 
                 Nitro.texSphere(
                         matrixStack,
@@ -46,7 +46,7 @@ public class YggRenderEvent implements WorldRenderEvents.Last {
                         0,
                         0,
                         0,
-                        5,
+                        6,
                         6,
                         (w.getAge() + delta) / 4
                 );
@@ -57,7 +57,7 @@ public class YggRenderEvent implements WorldRenderEvents.Last {
             {
                 matrixStack.push();
 
-                PlaneModel model = new PlaneModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(ModModelLayers.PLANE));
+                PlaneModel sigil1 = new PlaneModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(ModModelLayers.PLANE));
 
                 matrixStack.translate(x, y + 25, z);
 
@@ -70,9 +70,10 @@ public class YggRenderEvent implements WorldRenderEvents.Last {
                 );
 
                 matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(
-                        (WorldComponent.KEY.get(MinecraftClient.getInstance().world).getAge() + delta) * 2));
+                        (WorldComponent.KEY.get(MinecraftClient.getInstance().world).getAge() + delta) * 2)
+                );
 
-                model.render(
+                sigil1.render(
                         matrixStack,
                         consumers.getBuffer(
                                 RenderLayer.getEntityTranslucent(
@@ -86,7 +87,7 @@ public class YggRenderEvent implements WorldRenderEvents.Last {
 
                 matrixStack.push();
 
-                PlaneModel model2 = new PlaneModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(ModModelLayers.PLANE));
+                PlaneModel sigil2 = new PlaneModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(ModModelLayers.PLANE));
 
                 matrixStack.translate(x, y + 25, z);
 
@@ -97,9 +98,10 @@ public class YggRenderEvent implements WorldRenderEvents.Last {
                 );
 
                 matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(
-                        (WorldComponent.KEY.get(MinecraftClient.getInstance().world).getAge() + delta) * -2));
+                        (WorldComponent.KEY.get(MinecraftClient.getInstance().world).getAge() + delta) * -2)
+                );
 
-                model2.render(
+                sigil2.render(
                         matrixStack,
                         consumers.getBuffer(
                                 RenderLayer.getEntityTranslucent(
@@ -117,7 +119,7 @@ public class YggRenderEvent implements WorldRenderEvents.Last {
 
                 matrixStack.push();
 
-                matrixStack.translate(x, y, z);
+                matrixStack.translate(x - 0.5F, y, z - 0.5F);
 
                 Nitro.texCube(
                         matrixStack,

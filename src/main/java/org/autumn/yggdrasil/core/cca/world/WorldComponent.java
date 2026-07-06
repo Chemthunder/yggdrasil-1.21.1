@@ -31,6 +31,8 @@ public class WorldComponent implements AutoSyncedComponent, CommonTickingCompone
     private float radius = 0.0F;
 
     private boolean placed = false;
+    private boolean burning = false;
+    private boolean cracked = false;
 
     private Vec3d pos = Vec3d.ZERO;
 
@@ -63,9 +65,9 @@ public class WorldComponent implements AutoSyncedComponent, CommonTickingCompone
         }
     }
 
-    public void reset() {
+    public void reset(boolean skip) {
         radius = 0.0F;
-        delayToExpand = (5 * 20);
+        if (!skip) delayToExpand = (5 * 20);
         age = 0;
         placed = true;
 
@@ -77,7 +79,11 @@ public class WorldComponent implements AutoSyncedComponent, CommonTickingCompone
     }
 
     public void readFromNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup wrapperLookup) {
-        pos = readVec3d(nbt);
+        pos = new Vec3d(
+                nbt.getDouble("X"),
+                nbt.getDouble("Y"),
+                nbt.getDouble("Z")
+        );
 
         age = nbt.getInt("Age");
         delayToExpand = nbt.getInt("DToExpand");
@@ -85,10 +91,14 @@ public class WorldComponent implements AutoSyncedComponent, CommonTickingCompone
         radius = nbt.getFloat("Radius");
 
         placed = nbt.getBoolean("Placed");
+        burning = nbt.getBoolean("Burning");
+        cracked = nbt.getBoolean("Cracked");
     }
 
     public void writeToNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup wrapperLookup) {
-        writeVec3d(nbt, pos);
+        nbt.putDouble("X", pos.x);
+        nbt.putDouble("Y", pos.y);
+        nbt.putDouble("Z", pos.z);
 
         nbt.putInt("Age", age);
         nbt.putInt("DToExpand", delayToExpand);
@@ -96,16 +106,8 @@ public class WorldComponent implements AutoSyncedComponent, CommonTickingCompone
         nbt.putFloat("Radius", radius);
 
         nbt.putBoolean("Placed", placed);
-    }
-
-    private static Vec3d readVec3d(NbtCompound nbt) {
-        return new Vec3d(nbt.getDouble("X"), nbt.getDouble("Y"), nbt.getDouble("Z"));
-    }
-
-    private static void writeVec3d(NbtCompound nbt, Vec3d vec) {
-        nbt.putDouble("X", vec.x);
-        nbt.putDouble("Y", vec.y);
-        nbt.putDouble("Z", vec.z);
+        nbt.putBoolean("Burning", burning);
+        nbt.putBoolean("Cracked", cracked);
     }
 
     public Vec3d getPos() {
@@ -149,6 +151,24 @@ public class WorldComponent implements AutoSyncedComponent, CommonTickingCompone
 
     public void setRadius(float radius) {
         this.radius = radius;
+        sync();
+    }
+
+    public boolean isBurning() {
+        return burning;
+    }
+
+    public void setBurning(boolean burning) {
+        this.burning = burning;
+        sync();
+    }
+
+    public boolean isCracked() {
+        return cracked;
+    }
+
+    public void setCracked(boolean cracked) {
+        this.cracked = cracked;
         sync();
     }
 }
