@@ -42,10 +42,6 @@ public class EnclosedComponent implements AutoSyncedComponent, CommonTickingComp
                 sync();
             }
         }
-
-        if (living instanceof PlayerEntity player) {
-            player.sendMessage(Text.literal("In Box" + inBox), true);
-        }
     }
 
     public void sync() {

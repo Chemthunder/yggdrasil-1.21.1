@@ -24,7 +24,7 @@ public class YggRenderEvent implements WorldRenderEvents.Last {
         WorldComponent w = WorldComponent.KEY.get(MinecraftClient.getInstance().world);
         Vec3d pos = w.getPos();
 
-        if (matrixStack != null) {
+        if (matrixStack != null && w.isPlaced()) {
             float x = (float) (pos.x - worldRenderContext.camera().getPos().x);
             float y = (float) (pos.y - worldRenderContext.camera().getPos().y);
             float z = (float) (pos.z - worldRenderContext.camera().getPos().z);
