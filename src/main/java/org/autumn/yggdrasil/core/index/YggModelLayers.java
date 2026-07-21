@@ -11,7 +11,7 @@ import org.autumn.yggdrasil.core.client.model.PlaneModel;
  * @author AcoYT
  */
 @Environment(EnvType.CLIENT)
-public interface ModModelLayers {
+public interface YggModelLayers {
     EntityModelLayer PLANE = create("plane");
 
     private static EntityModelLayer create(String name) {

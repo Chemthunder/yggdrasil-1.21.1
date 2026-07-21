@@ -14,7 +14,7 @@ import net.minecraft.util.math.RotationAxis;
 import org.autumn.yggdrasil.core.Yggdrasil;
 import org.autumn.yggdrasil.core.cca.entity.TrustedComponent;
 import org.autumn.yggdrasil.core.client.model.PlaneModel;
-import org.autumn.yggdrasil.core.index.ModModelLayers;
+import org.autumn.yggdrasil.core.index.YggModelLayers;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -25,14 +25,14 @@ public class WillowHaloFeatureRenderer<T extends AbstractClientPlayerEntity> ext
 
     public WillowHaloFeatureRenderer(FeatureRendererContext<T, PlayerEntityModel<T>> context, EntityRendererFactory.@NotNull Context ctx) {
         super(context);
-        this.plane = new PlaneModel(ctx.getPart(ModModelLayers.PLANE));
+        this.plane = new PlaneModel(ctx.getPart(YggModelLayers.PLANE));
     }
 
     public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, T entity, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
         if (entity != null && !entity.isInvisible()) {
             TrustedComponent trust = TrustedComponent.KEY.get(entity);
 
-            if (trust.isTrusted()) {
+            if (trust.isTrusted() && trust.isShowHalo()) {
                 matrices.push();
 
                 matrices.scale(1.4F, 1.4F, 1.4F);

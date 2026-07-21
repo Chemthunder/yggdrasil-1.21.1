@@ -19,6 +19,7 @@ public class TrustedComponent implements AutoSyncedComponent {
     private final PlayerEntity player;
 
     private boolean trusted = false;
+    private boolean showHalo = true;
 
     public TrustedComponent(PlayerEntity player) {
         this.player = player;
@@ -30,10 +31,12 @@ public class TrustedComponent implements AutoSyncedComponent {
 
     public void readFromNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup wrapperLookup) {
         trusted = nbt.getBoolean("Trusted");
+        showHalo = nbt.getBoolean("ShowHalo");
     }
 
     public void writeToNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup wrapperLookup) {
         nbt.putBoolean("Trusted", trusted);
+        nbt.putBoolean("ShowHalo", showHalo);
     }
 
     public boolean isTrusted() {
@@ -42,6 +45,15 @@ public class TrustedComponent implements AutoSyncedComponent {
 
     public void setTrusted(boolean trusted) {
         this.trusted = trusted;
+        sync();
+    }
+
+    public boolean isShowHalo() {
+        return showHalo;
+    }
+
+    public void setShowHalo(boolean showHalo) {
+        this.showHalo = showHalo;
         sync();
     }
 }

@@ -19,9 +19,9 @@ import static net.minecraft.server.command.CommandManager.literal;
 /**
  * @author Chemthunder
  */
-public class MCommand implements CommandRegistrationCallback {
+public class YCommand implements CommandRegistrationCallback {
     public void register(CommandDispatcher<ServerCommandSource> commandDispatcher, CommandRegistryAccess commandRegistryAccess, CommandManager.RegistrationEnvironment registrationEnvironment) {
-        commandDispatcher.register(literal("yggdrasil").requires(MCommand::isViable)
+        commandDispatcher.register(literal("yggdrasil").requires(YCommand::isViable)
                 .then(literal("entity")
                         .then(literal("setPos").then(argument("pos", BlockPosArgumentType.blockPos()).executes(context -> {
                             BlockPos pos = BlockPosArgumentType.getBlockPos(context, "pos");
@@ -52,6 +52,13 @@ public class MCommand implements CommandRegistrationCallback {
                             TrustedComponent t = TrustedComponent.KEY.get(target);
 
                             t.setTrusted(BoolArgumentType.getBool(context, "state"));
+                            return 1;
+                        }))))
+                        .then(literal("player:showhalo").then(argument("target", EntityArgumentType.player()).then(argument("state", BoolArgumentType.bool()).executes(context -> {
+                            PlayerEntity target = EntityArgumentType.getPlayer(context, "target");
+                            TrustedComponent t = TrustedComponent.KEY.get(target);
+
+                            t.setShowHalo(BoolArgumentType.getBool(context, "state"));
                             return 1;
                         }))))
                         .then(literal("world:burning").then(argument("state", BoolArgumentType.bool()).executes(context -> {
