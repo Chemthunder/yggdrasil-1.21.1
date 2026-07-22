@@ -7,7 +7,6 @@ import net.minecraft.client.render.LightmapTextureManager;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.entity.model.EntityModelLoader;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.RotationAxis;
 import net.minecraft.util.math.Vec2f;
@@ -19,16 +18,6 @@ import org.autumn.yggdrasil.core.client.model.PlaneModel;
 import org.autumn.yggdrasil.core.index.YggModelLayers;
 
 public class YggRenderEvent implements WorldRenderEvents.Last {
-    private final PlaneModel sigil1;
-    private final PlaneModel sigil2;
-
-    public YggRenderEvent() {
-        EntityModelLoader loader = MinecraftClient.getInstance().getEntityModelLoader();
-
-        this.sigil1 = new PlaneModel(loader.getModelPart(YggModelLayers.PLANE));
-        this.sigil2 = new PlaneModel(loader.getModelPart(YggModelLayers.PLANE));
-    }
-
     public void onLast(WorldRenderContext worldRenderContext) {
         MatrixStack matrixStack = worldRenderContext.matrixStack();
         VertexConsumerProvider consumers = worldRenderContext.consumers();
@@ -68,6 +57,8 @@ public class YggRenderEvent implements WorldRenderEvents.Last {
             {
                 matrixStack.push();
 
+                PlaneModel sigil1 = new PlaneModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(YggModelLayers.PLANE));
+
                 matrixStack.translate(x, y + 25, z);
 
                 int sf = 24;
@@ -95,6 +86,8 @@ public class YggRenderEvent implements WorldRenderEvents.Last {
                 matrixStack.pop();
 
                 matrixStack.push();
+
+                PlaneModel sigil2 = new PlaneModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(YggModelLayers.PLANE));
 
                 matrixStack.translate(x, y + 25, z);
 
