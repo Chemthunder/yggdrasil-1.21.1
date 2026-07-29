@@ -14,16 +14,16 @@ import org.ladysnake.cca.api.v3.component.tick.CommonTickingComponent;
 /**
  * @author Chemthunder
  */
-public class EnclosedComponent implements AutoSyncedComponent, CommonTickingComponent {
-    public static final ComponentKey<EnclosedComponent> KEY = ComponentRegistry.getOrCreate(
+public class LivingEntityComponent implements AutoSyncedComponent, CommonTickingComponent {
+    public static final ComponentKey<LivingEntityComponent> KEY = ComponentRegistry.getOrCreate(
             Yggdrasil.id("enclosed"),
-            EnclosedComponent.class
+            LivingEntityComponent.class
     );
     private final LivingEntity living;
 
     private boolean inBox = false;
 
-    public EnclosedComponent(LivingEntity living) {
+    public LivingEntityComponent(LivingEntity living) {
         this.living = living;
     }
 

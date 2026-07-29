@@ -12,7 +12,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.RotationAxis;
 import org.autumn.yggdrasil.core.Yggdrasil;
-import org.autumn.yggdrasil.core.cca.entity.TrustedComponent;
+import org.autumn.yggdrasil.core.cca.entity.PlayerComponent;
 import org.autumn.yggdrasil.core.client.model.PlaneModel;
 import org.autumn.yggdrasil.core.index.YggModelLayers;
 import org.jetbrains.annotations.NotNull;
@@ -30,7 +30,7 @@ public class WillowHaloFeatureRenderer<T extends AbstractClientPlayerEntity> ext
 
     public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, T entity, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
         if (entity != null && !entity.isInvisible()) {
-            TrustedComponent trust = TrustedComponent.KEY.get(entity);
+            PlayerComponent trust = PlayerComponent.KEY.get(entity);
 
             if (trust.isTrusted() && trust.isShowHalo()) {
                 matrices.push();

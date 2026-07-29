@@ -5,7 +5,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import org.autumn.yggdrasil.core.cca.entity.EnclosedComponent;
+import org.autumn.yggdrasil.core.cca.entity.LivingEntityComponent;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -18,7 +18,7 @@ public abstract class MobEntityMixin {
 
     @WrapMethod(method = "getTarget")
     private LivingEntity a(Operation<LivingEntity> original) {
-        if (EnclosedComponent.KEY.get(this).isInBox()) {
+        if (LivingEntityComponent.KEY.get(this).isInBox()) {
             if (this.target instanceof PlayerEntity) {
                 return null;
             } else {
@@ -30,7 +30,7 @@ public abstract class MobEntityMixin {
 
     @WrapMethod(method = "getTargetInBrain")
     private LivingEntity b(Operation<LivingEntity> original) {
-        if (EnclosedComponent.KEY.get(this).isInBox()) {
+        if (LivingEntityComponent.KEY.get(this).isInBox()) {
             if (this.target instanceof PlayerEntity) {
                 return null;
             } else {

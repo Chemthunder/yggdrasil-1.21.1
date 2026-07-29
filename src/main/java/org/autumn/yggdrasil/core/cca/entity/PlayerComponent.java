@@ -11,17 +11,17 @@ import org.ladysnake.cca.api.v3.component.sync.AutoSyncedComponent;
 /**
  * @author Chemthunder
  */
-public class TrustedComponent implements AutoSyncedComponent {
-    public static final ComponentKey<TrustedComponent> KEY = ComponentRegistry.getOrCreate(
+public class PlayerComponent implements AutoSyncedComponent {
+    public static final ComponentKey<PlayerComponent> KEY = ComponentRegistry.getOrCreate(
             Yggdrasil.id("trusted"),
-            TrustedComponent.class
+            PlayerComponent.class
     );
     private final PlayerEntity player;
 
     private boolean trusted = false;
     private boolean showHalo = true;
 
-    public TrustedComponent(PlayerEntity player) {
+    public PlayerComponent(PlayerEntity player) {
         this.player = player;
     }
 

@@ -1,8 +1,9 @@
 package org.autumn.yggdrasil.core.cca;
 
 import net.minecraft.entity.LivingEntity;
-import org.autumn.yggdrasil.core.cca.entity.EnclosedComponent;
-import org.autumn.yggdrasil.core.cca.entity.TrustedComponent;
+import org.autumn.yggdrasil.core.cca.entity.IntoxicatedComponent;
+import org.autumn.yggdrasil.core.cca.entity.LivingEntityComponent;
+import org.autumn.yggdrasil.core.cca.entity.PlayerComponent;
 import org.autumn.yggdrasil.core.cca.world.WorldComponent;
 import org.ladysnake.cca.api.v3.entity.EntityComponentFactoryRegistry;
 import org.ladysnake.cca.api.v3.entity.EntityComponentInitializer;
@@ -21,13 +22,19 @@ public class YggdrasilCCA implements WorldComponentInitializer, EntityComponentI
     public void registerEntityComponentFactories(EntityComponentFactoryRegistry module) {
         module.beginRegistration(
                 LivingEntity.class,
-                EnclosedComponent.KEY
-        ).respawnStrategy(RespawnCopyStrategy.NEVER_COPY).end(EnclosedComponent::new);
+                LivingEntityComponent.KEY
+        ).respawnStrategy(RespawnCopyStrategy.NEVER_COPY).end(LivingEntityComponent::new);
 
         module.registerForPlayers(
-                TrustedComponent.KEY,
-                TrustedComponent::new,
+                PlayerComponent.KEY,
+                PlayerComponent::new,
                 RespawnCopyStrategy.ALWAYS_COPY
+        );
+
+        module.registerForPlayers(
+                IntoxicatedComponent.KEY,
+                IntoxicatedComponent::new,
+                RespawnCopyStrategy.NEVER_COPY
         );
     }
 }

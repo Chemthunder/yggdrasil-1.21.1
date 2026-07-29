@@ -5,8 +5,8 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Identifier;
-import org.autumn.yggdrasil.core.cca.entity.EnclosedComponent;
-import org.autumn.yggdrasil.core.cca.entity.TrustedComponent;
+import org.autumn.yggdrasil.core.cca.entity.LivingEntityComponent;
+import org.autumn.yggdrasil.core.cca.entity.PlayerComponent;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -23,7 +23,7 @@ public abstract class InGameHudMixin {
         PlayerEntity player = this.getCameraPlayer();
 
         if (player != null) {
-            if (EnclosedComponent.KEY.get(player).isInBox() || TrustedComponent.KEY.get(player).isTrusted()) {
+            if (LivingEntityComponent.KEY.get(player).isInBox() || PlayerComponent.KEY.get(player).isTrusted()) {
                 if (instance != InGameHud.HeartType.CONTAINER && instance != InGameHud.HeartType.ABSORBING && instance != InGameHud.HeartType.POISONED && instance != InGameHud.HeartType.WITHERED) {
                     if (blinking) {
                         if (half) {
