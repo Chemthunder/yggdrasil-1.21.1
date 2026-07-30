@@ -7,6 +7,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.StackReference;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.sound.SoundCategory;
@@ -77,6 +78,8 @@ public class BottledSapItem extends Item implements ModelVaryingItem {
                         tox.setDuration((30 * 20));
                         tox.apply();
                     }
+
+                    player.giveItemStack(new ItemStack(Items.GLASS));
                 }
             }
         }
@@ -92,23 +95,23 @@ public class BottledSapItem extends Item implements ModelVaryingItem {
             ToxicationEffect effect = stack.get(YggComponentTypes.TOX_EFFECT);
 
             if (effect != null) {
-                tooltip.add(Text.literal(effect.source().getName().getString()).withColor(0xFFfff3bd).append(Text.literal(" Mixture").formatted(Formatting.DARK_GRAY)));
+                tooltip.add(Text.literal(effect.source().getName().getString()).withColor(effect.color()).append(Text.literal(" Mixture").formatted(Formatting.DARK_GRAY)));
                 tooltip.add(Text.empty()
                         .append(Text.literal("- ").formatted(Formatting.DARK_GRAY))
-                        .append(Text.translatable(effect.boostedAttribute().value().getTranslationKey()).withColor(0xFFfff3bd))
+                        .append(Text.translatable(effect.boostedAttribute().value().getTranslationKey()).withColor(effect.color()))
                 );
 
                 if (effect.value() < 0) {
                     tooltip.add(Text.empty()
                             .append(Text.literal("- ").formatted(Formatting.DARK_GRAY))
                             .append(Text.literal("Lowered by ").formatted(Formatting.DARK_GRAY))
-                            .append(Text.literal(effect.value() + "").withColor(0xFFfff3bd))
+                            .append(Text.literal(Math.abs(effect.value()) + "").withColor(effect.color()))
                     );
                 } else {
                     tooltip.add(Text.empty()
                             .append(Text.literal("- ").formatted(Formatting.DARK_GRAY))
                             .append(Text.literal("Raised by ").formatted(Formatting.DARK_GRAY))
-                            .append(Text.literal(effect.value() + "").withColor(0xFFfff3bd))
+                            .append(Text.literal(Math.abs(effect.value()) + "").withColor(effect.color()))
                     );
                 }
             }

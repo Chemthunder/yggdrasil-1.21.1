@@ -17,5 +17,7 @@ public class YggLanguageProvider extends FabricLanguageProvider {
 
     public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
         translationBuilder.add(YggItems.BOTTLED_SAP, "Bottle of Sap");
+
+        translationBuilder.add("itemGroup.yggdrasil", "Yggdrasil");
     }
 }
