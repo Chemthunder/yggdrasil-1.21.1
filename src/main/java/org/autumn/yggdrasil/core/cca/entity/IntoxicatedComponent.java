@@ -9,6 +9,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.util.Identifier;
 import org.autumn.yggdrasil.api.ToxicationEffect;
 import org.autumn.yggdrasil.core.Yggdrasil;
 import org.jetbrains.annotations.Nullable;
@@ -27,6 +28,8 @@ public class IntoxicatedComponent implements AutoSyncedComponent, CommonTickingC
     );
     private final PlayerEntity player;
 
+    private static final Identifier ATTRIBUTE_MODIFIER_ID = Yggdrasil.id("toxication_effect_modifier");
+
     private @Nullable ToxicationEffect effect = null;
     private int duration = 0;
 
@@ -41,7 +44,7 @@ public class IntoxicatedComponent implements AutoSyncedComponent, CommonTickingC
                 if (effect != null) {
                     EntityAttributeInstance ins = player.getAttributeInstance(effect.boostedAttribute());
 
-                    ins.removeModifier(Yggdrasil.id("ToxicationEffectModifier"));
+                    ins.removeModifier(ATTRIBUTE_MODIFIER_ID);
 
                     effect = null;
                 }
@@ -78,13 +81,22 @@ public class IntoxicatedComponent implements AutoSyncedComponent, CommonTickingC
         sync();
     }
 
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+        sync();
+    }
+
     public void apply() {
         if (effect != null) {
             EntityAttributeInstance ins = player.getAttributeInstance(effect.boostedAttribute());
 
             if (ins != null) {
                 EntityAttributeModifier modifier = new EntityAttributeModifier(
-                        Yggdrasil.id("ToxicationEffectModifier"),
+                        ATTRIBUTE_MODIFIER_ID,
                         effect.value(),
                         EntityAttributeModifier.Operation.ADD_VALUE
                 );

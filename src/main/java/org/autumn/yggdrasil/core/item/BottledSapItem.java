@@ -68,6 +68,7 @@ public class BottledSapItem extends Item {
                     IntoxicatedComponent tox = IntoxicatedComponent.KEY.get(player);
 
                     tox.setEffect(effect);
+                    tox.setDuration(60);
                     tox.apply();
                 }
             }
