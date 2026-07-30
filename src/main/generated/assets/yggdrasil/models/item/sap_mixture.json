@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "yggdrasil:item/sap_mixture",
+    "layer1": "yggdrasil:item/sap_mixture_overlay"
+  }
+}

@@ -1,5 +1,7 @@
 package org.autumn.yggdrasil.core.item;
 
+import net.acoyt.acornlib.api.item.ModelVaryingItem;
+import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.StackReference;
@@ -14,18 +16,21 @@ import net.minecraft.text.Text;
 import net.minecraft.util.ClickType;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import org.autumn.yggdrasil.api.ToxicationEffect;
+import org.autumn.yggdrasil.core.Yggdrasil;
 import org.autumn.yggdrasil.core.cca.entity.IntoxicatedComponent;
 import org.autumn.yggdrasil.core.index.YggComponentTypes;
 import org.autumn.yggdrasil.core.index.YggToxicationEffects;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 /**
  * @author Chemthunder
  */
-public class BottledSapItem extends Item {
+public class BottledSapItem extends Item implements ModelVaryingItem {
     public BottledSapItem(Settings settings) {
         super(settings);
     }
@@ -67,9 +72,11 @@ public class BottledSapItem extends Item {
                 if (user instanceof PlayerEntity player) {
                     IntoxicatedComponent tox = IntoxicatedComponent.KEY.get(player);
 
-                    tox.setEffect(effect);
-                    tox.setDuration(60);
-                    tox.apply();
+                    if (tox.getDuration() <= 0) {
+                        tox.setEffect(effect);
+                        tox.setDuration((30 * 20));
+                        tox.apply();
+                    }
                 }
             }
         }
@@ -106,5 +113,37 @@ public class BottledSapItem extends Item {
                 }
             }
         }
+    }
+
+    public Text getName(ItemStack stack) {
+        if (stack.contains(YggComponentTypes.TOX_EFFECT)) {
+            ToxicationEffect effect = stack.get(YggComponentTypes.TOX_EFFECT);
+
+            if (effect != null) {
+                return Text.literal("Sap Mixture").withColor(effect.color());
+            } else {
+                return super.getName(stack);
+            }
+        } else {
+            return super.getName(stack);
+        }
+    }
+
+    public Identifier getModel(ModelTransformationMode modelTransformationMode, ItemStack itemStack, @Nullable LivingEntity livingEntity) {
+        if (itemStack.contains(YggComponentTypes.TOX_EFFECT)) {
+            ToxicationEffect effect = itemStack.get(YggComponentTypes.TOX_EFFECT);
+
+            if (effect != null) {
+                return Yggdrasil.id("sap_mixture");
+            }
+        }
+        return Yggdrasil.id("bottled_sap");
+    }
+
+    public List<Identifier> getModelsToLoad() {
+        return List.of(
+                Yggdrasil.id("bottled_smp"),
+                Yggdrasil.id("sap_mixture")
+        );
     }
 }

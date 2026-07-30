@@ -1,6 +1,14 @@
 {
   "values": [
     "minecraft:torchflower",
-    "minecraft:wheat"
+    "minecraft:wheat",
+    "minecraft:gunpowder",
+    "minecraft:glow_berries",
+    "minecraft:beetroot",
+    "minecraft:glow_lichen",
+    "minecraft:feather",
+    "minecraft:rotten_flesh",
+    "minecraft:magma_cream",
+    "minecraft:sculk_sensor"
   ]
 }

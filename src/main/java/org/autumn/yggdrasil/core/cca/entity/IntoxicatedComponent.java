@@ -9,14 +9,18 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import org.autumn.yggdrasil.api.ToxicationEffect;
 import org.autumn.yggdrasil.core.Yggdrasil;
+import org.autumn.yggdrasil.core.index.YggParticleTypes;
 import org.jetbrains.annotations.Nullable;
 import org.ladysnake.cca.api.v3.component.ComponentKey;
 import org.ladysnake.cca.api.v3.component.ComponentRegistry;
 import org.ladysnake.cca.api.v3.component.sync.AutoSyncedComponent;
 import org.ladysnake.cca.api.v3.component.tick.CommonTickingComponent;
+
+import java.util.Random;
 
 /**
  * @author Chemthunder
@@ -43,12 +47,27 @@ public class IntoxicatedComponent implements AutoSyncedComponent, CommonTickingC
             if (duration == 0) {
                 if (effect != null) {
                     EntityAttributeInstance ins = player.getAttributeInstance(effect.boostedAttribute());
-
-                    ins.removeModifier(ATTRIBUTE_MODIFIER_ID);
+                    if (ins != null) ins.removeModifier(ATTRIBUTE_MODIFIER_ID);
 
                     effect = null;
                 }
                 sync();
+            }
+
+            if (player.age % 4 == 0) {
+                if (player.getWorld() instanceof ServerWorld serverWorld) {
+                    serverWorld.spawnParticles(
+                            YggParticleTypes.CONSUME,
+                            player.getX(),
+                            player.getY() + 1.0F,
+                            player.getZ(),
+                            2,
+                            0.2F,
+                            0.5F,
+                            0.2F,
+                            0.03F
+                    );
+                }
             }
         }
     }

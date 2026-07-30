@@ -5,10 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.util.Identifier;
 import org.autumn.yggdrasil.core.command.YCommand;
-import org.autumn.yggdrasil.core.index.YggComponentTypes;
-import org.autumn.yggdrasil.core.index.YggItems;
-import org.autumn.yggdrasil.core.index.YggParticleTypes;
-import org.autumn.yggdrasil.core.index.YggToxicationEffects;
+import org.autumn.yggdrasil.core.index.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,6 +20,7 @@ public class Yggdrasil implements ModInitializer {
         YggToxicationEffects.init();
         YggComponentTypes.init();
         YggParticleTypes.init();
+        YggItemGroups.init();
 
         ALib.registerModMenu(MOD_ID, 0xFFc6fc6f);
 

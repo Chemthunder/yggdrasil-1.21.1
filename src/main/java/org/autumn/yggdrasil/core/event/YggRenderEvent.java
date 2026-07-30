@@ -29,7 +29,7 @@ public class YggRenderEvent implements WorldRenderEvents.Last {
             float y = (float) (pos.y - worldRenderContext.camera().getPos().y);
             float z = (float) (pos.z - worldRenderContext.camera().getPos().z);
 
-            float delta = worldRenderContext.tickCounter().getTickDelta(true);
+            float delta = worldRenderContext.tickCounter().getTickDelta(false);
 
             {
                 matrixStack.push();

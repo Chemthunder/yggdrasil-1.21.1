@@ -4,6 +4,7 @@ import net.acoyt.acornlib.api.registrants.ItemRegistrant;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import org.autumn.yggdrasil.core.Yggdrasil;
 import org.autumn.yggdrasil.core.item.BottledSapItem;
 
@@ -15,7 +16,7 @@ public interface YggItems {
 
     Item BOTTLED_SAP = rant.register("bottled_sap", BottledSapItem::new, new Item.Settings()
             .maxCount(1)
-            .food(new FoodComponent.Builder().alwaysEdible().build())
+            .food(new FoodComponent.Builder().alwaysEdible().usingConvertsTo(Items.GLASS_BOTTLE).build())
     );
 
     static void init() {}
