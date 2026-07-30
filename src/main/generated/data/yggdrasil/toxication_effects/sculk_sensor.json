@@ -1,0 +1,6 @@
+{
+  "boostedAttribute": "minecraft:player.sneaking_speed",
+  "color": -16711810,
+  "source": "minecraft:sculk_sensor",
+  "value": 1.0
+}

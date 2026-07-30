@@ -1,15 +1,11 @@
 package org.autumn.yggdrasil.mixin;
 
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
-import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import org.autumn.yggdrasil.core.cca.entity.LivingEntityComponent;
-import org.autumn.yggdrasil.core.index.YggItemGroups;
 import org.autumn.yggdrasil.core.index.YggItems;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

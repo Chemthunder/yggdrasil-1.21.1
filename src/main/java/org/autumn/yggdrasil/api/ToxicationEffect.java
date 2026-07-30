@@ -3,14 +3,10 @@ package org.autumn.yggdrasil.api;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.codec.PacketCodecs;
-import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.entry.RegistryEntry;
 

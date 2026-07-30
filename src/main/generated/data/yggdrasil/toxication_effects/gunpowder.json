@@ -1,0 +1,6 @@
+{
+  "boostedAttribute": "minecraft:generic.explosion_knockback_resistance",
+  "color": -6779788,
+  "source": "minecraft:gunpowder",
+  "value": 1.2
+}

@@ -23,7 +23,7 @@ import org.autumn.yggdrasil.api.ToxicationEffect;
 import org.autumn.yggdrasil.core.Yggdrasil;
 import org.autumn.yggdrasil.core.cca.entity.IntoxicatedComponent;
 import org.autumn.yggdrasil.core.index.YggComponentTypes;
-import org.autumn.yggdrasil.core.index.YggToxicationEffects;
+import org.autumn.yggdrasil.core.util.ToxicationEffectResourceReloadListener;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -43,9 +43,9 @@ public class BottledSapItem extends Item implements ModelVaryingItem {
     public boolean onClicked(ItemStack stack, ItemStack otherStack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference) {
         if (!stack.contains(YggComponentTypes.TOX_EFFECT)) {
             if (clickType == ClickType.RIGHT) {
-                if (YggToxicationEffects.findEffectFromItemStack(otherStack.getItem()) != null) {
+                if (ToxicationEffectResourceReloadListener.findEffectFromItemStack(otherStack.getItem()) != null) {
                     ItemStack toSet = otherStack.split(1);
-                    ToxicationEffect effect = YggToxicationEffects.findEffectFromItemStack(toSet);
+                    ToxicationEffect effect = ToxicationEffectResourceReloadListener.findEffectFromItemStack(toSet);
 
                     stack.set(YggComponentTypes.TOX_EFFECT, effect);
 

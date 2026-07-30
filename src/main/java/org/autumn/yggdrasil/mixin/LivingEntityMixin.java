@@ -2,18 +2,12 @@ package org.autumn.yggdrasil.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.attribute.*;
 import net.minecraft.particle.ParticleEffect;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.server.command.AttributeCommand;
 import net.minecraft.world.World;
 import org.autumn.yggdrasil.core.index.YggParticleTypes;
 import org.autumn.yggdrasil.core.item.BottledSapItem;
-import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 
 /**

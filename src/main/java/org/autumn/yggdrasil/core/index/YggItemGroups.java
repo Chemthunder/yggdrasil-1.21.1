@@ -11,6 +11,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
 import org.autumn.yggdrasil.api.ToxicationEffect;
 import org.autumn.yggdrasil.core.Yggdrasil;
+import org.autumn.yggdrasil.core.util.ToxicationEffectResourceReloadListener;
 
 /**
  * @author Chemthunder
@@ -31,7 +32,7 @@ public interface YggItemGroups {
     private static void addEntries(FabricItemGroupEntries entries) {
         entries.add(YggItems.BOTTLED_SAP);
 
-        for (ToxicationEffect effect : YggToxicationEffects.effects) {
+        for (ToxicationEffect effect : ToxicationEffectResourceReloadListener.collectEffects()) {
             ItemStack stack = new ItemStack(YggItems.BOTTLED_SAP);
 
             stack.set(YggComponentTypes.TOX_EFFECT, effect);
