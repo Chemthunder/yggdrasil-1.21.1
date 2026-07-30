@@ -22,11 +22,6 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(value = LivingEntity.class)
 public abstract class LivingEntityMixin {
 
-    @WrapOperation(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/attribute/DefaultAttributeRegistry;get(Lnet/minecraft/entity/EntityType;)Lnet/minecraft/entity/attribute/DefaultAttributeContainer;"))
-    private DefaultAttributeContainer a(EntityType<? extends LivingEntity> type, Operation<DefaultAttributeContainer> original) {
-        return original.call(type);
-    }
-
     @WrapOperation(
             method = "spawnItemParticles",
             at = @At(

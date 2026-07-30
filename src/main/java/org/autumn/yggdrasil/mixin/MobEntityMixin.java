@@ -12,9 +12,7 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(value = MobEntity.class)
 public abstract class MobEntityMixin {
-
-    @Shadow
-    private @Nullable LivingEntity target;
+    @Shadow private @Nullable LivingEntity target;
 
     @WrapMethod(method = "getTarget")
     private LivingEntity a(Operation<LivingEntity> original) {
