@@ -151,6 +151,16 @@ public class YggToxicationEffectProvider extends FabricCodecDataProvider<Toxicat
                         0xFF50bcff
                 )
         );
+
+        consumer.accept(
+                Yggdrasil.id("sculk"),
+                new ToxicationEffect(
+                        Items.SCULK,
+                        EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE,
+                        0.5F,
+                        0xFF103736
+                )
+        );
     }
 
     public String getName() {
