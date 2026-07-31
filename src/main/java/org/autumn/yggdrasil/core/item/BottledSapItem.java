@@ -44,15 +44,15 @@ public class BottledSapItem extends Item implements ModelVaryingItem {
         if (!stack.contains(YggComponentTypes.TOX_EFFECT)) {
             if (clickType == ClickType.RIGHT) {
                 if (ToxicationEffectResourceReloadListener.findEffectFromItemStack(otherStack.getItem()) != null) {
-                    ItemStack toSet = otherStack.split(1);
-                    ToxicationEffect effect = ToxicationEffectResourceReloadListener.findEffectFromItemStack(toSet);
+                    ToxicationEffect effect = ToxicationEffectResourceReloadListener.findEffectFromItemStack(otherStack.getItem());
+                    otherStack.decrement(1);
 
                     stack.set(YggComponentTypes.TOX_EFFECT, effect);
 
                     if (player.getWorld().isClient()) {
                         player.playSoundToPlayer(
                                 SoundEvents.ENTITY_ZOMBIE_VILLAGER_CURE,
-                                SoundCategory.PLAYERS,
+                                SoundCategory.MASTER,
                                 1,
                                 1
                         );
@@ -78,11 +78,10 @@ public class BottledSapItem extends Item implements ModelVaryingItem {
                         tox.setDuration((30 * 20));
                         tox.apply();
                     }
-
-                    player.giveItemStack(new ItemStack(Items.GLASS));
                 }
             }
         }
+        user.setStackInHand(user.getActiveHand(), new ItemStack(Items.GLASS_BOTTLE));
         return super.finishUsing(stack, world, user);
     }
 

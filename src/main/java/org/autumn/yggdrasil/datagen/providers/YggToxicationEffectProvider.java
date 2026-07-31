@@ -21,8 +21,8 @@ public class YggToxicationEffectProvider extends FabricCodecDataProvider<Toxicat
         super(dataOutput, registriesFuture, DataOutput.OutputType.DATA_PACK, "toxication_effects", ToxicationEffect.CODEC);
     }
 
-    protected void configure(BiConsumer<Identifier, ToxicationEffect> biConsumer, RegistryWrapper.WrapperLookup wrapperLookup) {
-        biConsumer.accept(
+    protected void configure(BiConsumer<Identifier, ToxicationEffect> consumer, RegistryWrapper.WrapperLookup wrapperLookup) {
+        consumer.accept(
                 Yggdrasil.id("torchflower"),
                 new ToxicationEffect(
                         Items.TORCHFLOWER,
@@ -32,7 +32,7 @@ public class YggToxicationEffectProvider extends FabricCodecDataProvider<Toxicat
                 )
         );
 
-        biConsumer.accept(
+        consumer.accept(
                 Yggdrasil.id("wheat"),
                 new ToxicationEffect(
                         Items.WHEAT,
@@ -42,7 +42,7 @@ public class YggToxicationEffectProvider extends FabricCodecDataProvider<Toxicat
                 )
         );
 
-        biConsumer.accept(
+        consumer.accept(
                 Yggdrasil.id("gunpowder"),
                 new ToxicationEffect(
                         Items.GUNPOWDER,
@@ -52,7 +52,7 @@ public class YggToxicationEffectProvider extends FabricCodecDataProvider<Toxicat
                 )
         );
 
-        biConsumer.accept(
+        consumer.accept(
                 Yggdrasil.id("glow_berries"),
                 new ToxicationEffect(
                         Items.GLOW_BERRIES,
@@ -62,7 +62,7 @@ public class YggToxicationEffectProvider extends FabricCodecDataProvider<Toxicat
                 )
         );
 
-        biConsumer.accept(
+        consumer.accept(
                 Yggdrasil.id("beetroot"),
                 new ToxicationEffect(
                         Items.BEETROOT,
@@ -72,7 +72,7 @@ public class YggToxicationEffectProvider extends FabricCodecDataProvider<Toxicat
                 )
         );
 
-        biConsumer.accept(
+        consumer.accept(
                 Yggdrasil.id("glow_lichen"),
                 new ToxicationEffect(
                         Items.GLOW_LICHEN,
@@ -82,7 +82,7 @@ public class YggToxicationEffectProvider extends FabricCodecDataProvider<Toxicat
                 )
         );
 
-        biConsumer.accept(
+        consumer.accept(
                 Yggdrasil.id("feather"),
                 new ToxicationEffect(
                         Items.FEATHER,
@@ -92,7 +92,7 @@ public class YggToxicationEffectProvider extends FabricCodecDataProvider<Toxicat
                 )
         );
 
-        biConsumer.accept(
+        consumer.accept(
                 Yggdrasil.id("rotten_flesh"),
                 new ToxicationEffect(
                         Items.ROTTEN_FLESH,
@@ -102,7 +102,7 @@ public class YggToxicationEffectProvider extends FabricCodecDataProvider<Toxicat
                 )
         );
 
-        biConsumer.accept(
+        consumer.accept(
                 Yggdrasil.id("magma_cream"),
                 new ToxicationEffect(
                         Items.MAGMA_CREAM,
@@ -112,13 +112,43 @@ public class YggToxicationEffectProvider extends FabricCodecDataProvider<Toxicat
                 )
         );
 
-        biConsumer.accept(
+        consumer.accept(
                 Yggdrasil.id("sculk_sensor"),
                 new ToxicationEffect(
                         Items.SCULK_SENSOR,
                         EntityAttributes.PLAYER_SNEAKING_SPEED,
                         1.0F,
                         0xFF00ff7e
+                )
+        );
+
+        consumer.accept(
+                Yggdrasil.id("honeycomb"),
+                new ToxicationEffect(
+                        Items.HONEYCOMB,
+                        EntityAttributes.PLAYER_BLOCK_INTERACTION_RANGE,
+                        2.5F,
+                        0xFFffedcd
+                )
+        );
+
+        consumer.accept(
+                Yggdrasil.id("sweet_berries"),
+                new ToxicationEffect(
+                        Items.SWEET_BERRIES,
+                        EntityAttributes.GENERIC_FALL_DAMAGE_MULTIPLIER,
+                        -0.5F,
+                        0xFFff0068
+                )
+        );
+
+        consumer.accept(
+                Yggdrasil.id("nautilus_shell"),
+                new ToxicationEffect(
+                        Items.NAUTILUS_SHELL,
+                        EntityAttributes.GENERIC_WATER_MOVEMENT_EFFICIENCY,
+                        2.5F,
+                        0xFF50bcff
                 )
         );
     }

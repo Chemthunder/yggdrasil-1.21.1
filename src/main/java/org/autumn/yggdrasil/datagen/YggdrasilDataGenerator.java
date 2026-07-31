@@ -8,8 +8,6 @@ public class YggdrasilDataGenerator implements DataGeneratorEntrypoint {
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         var pack = fabricDataGenerator.createPack();
 
-        pack.addProvider(YggItemTagProvider::new);
-
         pack.addProvider(YggModelProvider::new);
         pack.addProvider(YggLanguageProvider::new);
 

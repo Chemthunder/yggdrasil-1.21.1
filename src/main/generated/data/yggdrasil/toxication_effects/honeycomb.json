@@ -1,0 +1,6 @@
+{
+  "boostedAttribute": "minecraft:player.block_interaction_range",
+  "color": -4659,
+  "source": "minecraft:honeycomb",
+  "value": 2.5
+}

@@ -1,0 +1,6 @@
+{
+  "boostedAttribute": "minecraft:generic.fall_damage_multiplier",
+  "color": -65432,
+  "source": "minecraft:sweet_berries",
+  "value": -0.5
+}
