@@ -1,0 +1,21 @@
+package org.chemthunder.yggdrasil.core.index;
+
+import net.acoyt.acornlib.api.registrants.DataComponentTypeRegistrant;
+import net.minecraft.component.ComponentType;
+import org.chemthunder.yggdrasil.api.ToxicationEffect;
+import org.chemthunder.yggdrasil.core.Yggdrasil;
+
+/**
+ * @author Chemthunder
+ */
+public interface YggComponentTypes {
+    DataComponentTypeRegistrant rant = new DataComponentTypeRegistrant(Yggdrasil.MOD_ID);
+
+    ComponentType<ToxicationEffect> TOX_EFFECT = rant.register(
+            "toxication_effect",
+            ToxicationEffect.CODEC,
+            ToxicationEffect.PACKET_CODEC
+    );
+
+    static void init() {}
+}

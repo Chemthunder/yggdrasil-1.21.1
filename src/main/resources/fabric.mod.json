@@ -19,18 +19,18 @@
 
   "entrypoints": {
     "main": [
-      "org.autumn.yggdrasil.core.Yggdrasil"
+      "org.chemthunder.yggdrasil.core.Yggdrasil"
     ],
     "client": [
-      "org.autumn.yggdrasil.core.YggdrasilClient"
+      "org.chemthunder.yggdrasil.core.YggdrasilClient"
     ],
 
     "fabric-datagen": [
-      "org.autumn.yggdrasil.datagen.YggdrasilDataGenerator"
+      "org.chemthunder.yggdrasil.datagen.YggdrasilDataGenerator"
     ],
 
     "cardinal-components": [
-      "org.autumn.yggdrasil.core.cca.YggdrasilCCA"
+      "org.chemthunder.yggdrasil.core.cca.YggdrasilCCA"
     ]
   },
 
@@ -51,7 +51,9 @@
       "yggdrasil:world",
       "yggdrasil:enclosed",
       "yggdrasil:trusted",
-      "yggdrasil:intoxicated"
+      "yggdrasil:intoxicated",
+      "yggdrasil:sylvaticus",
+      "yggdrasil:taproot"
     ]
   }
 }

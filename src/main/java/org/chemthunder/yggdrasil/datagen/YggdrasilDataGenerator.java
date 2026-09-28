@@ -1,0 +1,18 @@
+package org.chemthunder.yggdrasil.datagen;
+
+import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import org.chemthunder.yggdrasil.datagen.providers.*;
+
+public class YggdrasilDataGenerator implements DataGeneratorEntrypoint {
+	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
+        var pack = fabricDataGenerator.createPack();
+
+        pack.addProvider(YggModelProvider::new);
+        pack.addProvider(YggLanguageProvider::new);
+
+        pack.addProvider(YggParticleProvider::new);
+
+        pack.addProvider(YggToxicationEffectProvider::new);
+    }
+}

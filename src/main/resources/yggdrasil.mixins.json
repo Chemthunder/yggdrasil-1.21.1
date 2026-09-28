@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "org.autumn.yggdrasil.mixin",
+  "package": "org.chemthunder.yggdrasil.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "InGameHudMixin",
@@ -15,6 +15,7 @@
     "requireAnnotations": true
   },
   "client": [
+    "client.MinecraftClientMixin",
     "client.PlayerEntityRendererMixin"
   ]
 }

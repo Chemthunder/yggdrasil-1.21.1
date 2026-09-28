@@ -1,3 +1,6 @@
-// 1.21.1	2026-07-31T10:32:24.4817785	Yggdrasil/Model Definitions
-0ba0b3134f8141774e559574addc61006f9801d0 assets\yggdrasil\models\item\bottled_sap.json
+// 1.21.1	2026-09-27T21:17:22.3936199	Yggdrasil/Model Definitions
 4cea92574570acde9311ef26ebcea4bd8701b898 assets\yggdrasil\models\item\sap_mixture.json
+0ba0b3134f8141774e559574addc61006f9801d0 assets\yggdrasil\models\item\bottled_sap.json
+ecbe0502368ee186adb17f93d7755d3c68d583b8 assets\yggdrasil\blockstates\taproot.json
+b356b2fbb5b68bbe084d2172bf165718c9cbd6cf assets\yggdrasil\models\item\taproot.json
+0386aa874b6ff900e8a3cc29605926d708b1d4b9 assets\yggdrasil\models\item\sylvaticus.json
