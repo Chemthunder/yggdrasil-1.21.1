@@ -5,7 +5,6 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.packet.CustomPayload;
 import org.chemthunder.yggdrasil.core.Yggdrasil;
-import org.chemthunder.yggdrasil.core.client.event.ImpactFrameEvents;
 
 /**
  * @author Chemthunder

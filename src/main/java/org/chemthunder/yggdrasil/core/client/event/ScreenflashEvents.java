@@ -1,7 +1,6 @@
 package org.chemthunder.yggdrasil.core.client.event;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.acoyt.acornlib.api.client.Easings;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;

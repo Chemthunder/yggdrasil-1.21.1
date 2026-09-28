@@ -18,8 +18,6 @@ import net.minecraft.world.World;
 import org.chemthunder.yggdrasil.core.cca.entity.SylvaticusComponent;
 import org.chemthunder.yggdrasil.core.index.YggParticleTypes;
 
-import java.util.Random;
-
 /**
  * @author Chemthunder
  */

@@ -1,8 +1,8 @@
 package org.chemthunder.yggdrasil.core.cca;
 
 import net.minecraft.entity.LivingEntity;
-import org.chemthunder.yggdrasil.core.cca.entity.IntoxicatedComponent;
 import org.chemthunder.yggdrasil.core.cca.entity.BoxComponent;
+import org.chemthunder.yggdrasil.core.cca.entity.IntoxicatedComponent;
 import org.chemthunder.yggdrasil.core.cca.entity.SylvaticusComponent;
 import org.chemthunder.yggdrasil.core.cca.entity.TrustedComponent;
 import org.chemthunder.yggdrasil.core.cca.world.TaprootComponent;
